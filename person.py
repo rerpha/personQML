@@ -6,12 +6,13 @@ class Person(QObject):
         super().__init__()
         self.current_mood = "Happy"
 
-    notifier = Signal(str)
-
     def getMood(self):
         return self.current_mood
 
     def setMood(self, mood):
-        self.current_mood = mood
+        if mood != self.current_mood:
+            self.current_mood = mood
+            self.moodChanged.emit()
 
-    mood = Property(str, getMood, setMood, notify=notifier)
+    moodChanged = Signal()
+    mood = Property(str, getMood, setMood, notify=moodChanged)

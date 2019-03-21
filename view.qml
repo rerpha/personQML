@@ -10,39 +10,38 @@ Rectangle {
 
     Person {
         id: person
-        onNotifier:{
-            currentMood.mood= person.mood
+        onMoodChanged:{
+            currentMood.mood = person.mood
         }
     }
 
-
     Text {
-        property var mood: person.mood
+        property alias mood: person.mood
         id: currentMood
         anchors.top: parent.top
         text: "Current mood: " + mood
-    }
 
+    }
 
     Label {
         id:label
         anchors.bottom: parent.bottom
         text: "Mood \:"
         TextField {
-        id: field
-        focus: true
-        anchors.bottom: parent.bottom
-        anchors.left: parent.right
-        Button {
-        id: button
-        anchors.bottom: parent.bottom
-        anchors.left: field.right
-        onClicked: {
-            person.mood=field.text
-        }
-    }
+            id: field
+            focus: true
+            anchors.bottom: parent.bottom
+            anchors.left: parent.right
+            Button {
+                id: button
+                anchors.bottom: parent.bottom
+                anchors.left: field.right
+                onClicked: {
+                    person.mood=field.text
+                }
+            }
 
-    }
+        }
     }
 
 }
