@@ -7,6 +7,7 @@ from person import Person
 VERSION_MAJOR = 1
 VERSION_MINOR = 0
 
+# Register our Person object as part of a module so it can be used in QML.
 qmlRegisterType(Person, "MyModule", VERSION_MAJOR, VERSION_MINOR, "Person")
 
 app = QApplication([])
